@@ -51,7 +51,7 @@
     @php echo csrf_field() @endphp
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
-        <input type="number" class="form-control" name="nim" id="nim" placeholder="Masukkan NIM anda!">
+        <input type="number" class="form-control" name="nim" id="nim" placeholder="{{Auth::user()->nim}}" disabled>
     </div>
     <p class="text-justify">Semester!</p>
     <div class="form-check">
@@ -112,6 +112,15 @@
     </div>
 </form>
 </div>
+
+    <!-- <script>
+    $(document).ready(function() {
+        $('#date').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            });
+            });
+    </script> -->
 
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

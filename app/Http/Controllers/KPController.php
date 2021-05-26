@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\KP;
+use App\Mahasiswa;
+use Auth;
 
 class KPController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
         $kp = KP::all();
         return view('viewkp', ['kp' => $kp]);
     }
@@ -20,8 +29,11 @@ class KPController extends Controller
 
     public function simpan(Request $request)
     {
+        $nim=Auth::user()->nim;
+        $id=Auth::user()->id; 
         DB::table('kp')->insert([
-            'nim' => $request->nim,
+            'id' =>$id,
+            'nim' => $nim,
             'semester' => $request->semester,
             'tahun_kp' => $request->tahun_kp,
             'tool' => $request->tool,
@@ -34,38 +46,40 @@ class KPController extends Controller
             'jdl_kp' => $request->jdl_kp,
             'dokumen' => $request->dokumen,
         ]);
-        return redirect('/viewkp');
+        return redirect('/kp');
     }
 
     public function edit($id_kp) 
     {
-        $kp = KP::find($id_kp);
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
+        $kp = KP::where('id_kp',$id_kp)->first();
         return view('editkp', ['kp' => $kp]);
     }
 
-    public function updated($id_kp, Request $request)
+    public function updated(Request $request)
     {
-        $kp = KP::find($id_kp);
-        $kp->nim = $request->nim;
-        $kp->semester = $request->semester;
-        $kp->tahun_kp = $request->tahun_kp;
-        $kp->tool = $request->tool;
-        $kp->spek = $request->spek;
-        $kp->lembaga = $request->lembaga;
-        $kp->pimpinan = $request->pimpinan;
-        $kp->alamat = $request->alamat;
-        $kp->telp_lembaga = $request->telp_lembaga;
-        $kp->wkt_pel_kp = $request->wkt_pel_kp;
-        $kp->jdl_kp = $request->jdl_kp;
-        $kp->dokumen = $request->dokumen;
-        $kp->simpan();
-        return redirect('/viewkp');
+        $nim=Auth::user()->nim;
+        $id=Auth::user()->id;  
+        KP::where('id_kp', $request->id_kp)->update([
+            'semester' => $request->semester,
+            'tahun_kp' => $request->tahun_kp,
+            'tool' => $request->tool,
+            'spek' => $request->spek,
+            'lembaga' => $request->lembaga,
+            'pimpinan' => $request->pimpinan,
+            'alamat' => $request->alamat,
+            'telp_lembaga' => $request->telp_lembaga,
+            'wkt_pel_kp' => $request->wkt_pel_kp,
+            'jdl_kp' => $request->jdl_kp,
+            'dokumen' => $request->dokumen,
+        ]);
+        return redirect('/kp');
     }
 
     public function delete($id_kp) 
     {
-        $kp = KP::find($id_kp);
-        $kp->delete();
-        return redirect ('/viewkp');
+        KP::where('id_kp', $id_kp)->delete();
+        return redirect ('/kp');
     }
 }

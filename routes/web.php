@@ -20,26 +20,27 @@ Route::get('/callback', 'loginGoogleController@callback');
 Route::get('/logout', 'loginGoogleController@logout');
 
 Route::get('/mahasiswa', 'MahasiswaController@index');
-Route::get('/mahasiswa/edit', 'MahasiswaController@edit');
+Route::get('/mahasiswa/edit/{id}', 'MahasiswaController@edit');
+Route::put('/mahasiswa/updated/', 'MahasiswaController@updated');
 Route::get('/dosen', 'DosenController@index');
 
 Route::get('/suratkp', 'SuratKPController@index');
 Route::get('/suratkp/tambahSurat', 'SuratKPController@tambahSurat');
 Route::post('/suratkp/simpan', 'SuratKPController@simpan');
-Route::post('/suratkp/edit/{id_skp}', 'SuratKPController@edit');
-Route::put('/suratkp/updated/{id_skp}', 'SuratKPController@updated');
-Route::put('/suratkp/delete/{id_skp}', 'SuratKPController@delete');
+Route::get('/suratkp/edit/{id_skp}', 'SuratKPController@edit');
+Route::put('/suratkp/updated/', 'SuratKPController@updated');
+Route::get('/suratkp/delete/{id_skp}', 'SuratKPController@delete');
 
 Route::get('/prakp', 'praKPController@index');
 Route::get('/prakp/tambah', 'praKPController@tambah');
 Route::post('/prakp/simpan', 'praKPController@simpan');
-Route::post('/prakp/edit/{id_pkp}', 'praKPController@edit');
-Route::put('/prakp/updated/{id_pkp}', 'praKPController@updated');
-Route::put('/prakp/delete/{id_pkp}', 'praKPController@delete');
+Route::get('/prakp/edit/{id_prakp}', 'praKPController@edit');
+Route::put('/prakp/updated/', 'praKPController@updated');
+Route::get('/prakp/delete/{id_prakp}', 'praKPController@delete');
 
 Route::get('/kp', 'KPController@index');
 Route::get('/kp/tambah', 'KPController@tambah');
 Route::post('/kp/simpan', 'KPController@simpan');
-Route::post('/kp/edit/{id_kp}', 'KPController@edit');
-Route::put('/kp/updated/{id_kp}', 'KPController@updated');
-Route::put('/kp/delete/{id_kp}', 'KPController@delete');
+Route::get('/kp/edit/{id_kp}', 'KPController@edit');
+Route::put('/kp/updated/', 'KPController@updated');
+Route::get('/kp/delete/{id_kp}', 'KPController@delete');

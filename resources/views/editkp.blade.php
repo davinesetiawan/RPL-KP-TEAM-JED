@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>..:TAMBAH DATA KP:..</title>
+    <title>..:EDIT DATA PRA KP:..</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <body>
@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/mahasiswa">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -44,67 +44,69 @@
         </div>
     </nav>
     <blockquote class="blockquote">
-        <p class="mt-3">Tambah Data Kerja Praktek</p>
-        <p class="mb-0">Isi form dibawah ini untuk menambah Data Pengajuan Kerja Praktek</p>
+        <p class="mt-3">Edit Data Kerja Praktek</p>
+        <p class="mb-0">Edit form data pengajuan Kerja Praktek</p>
     </blockquote>
-<form action="/kp/simpan" method="post">
-    @php echo csrf_field() @endphp
+<form action="/kp/updated/" method="post">
+    @csrf
+    @method ('PUT')
+    <input type="hidden" class="form-control" name="id_kp" id="id_kp" value="{{ $kp->id_kp }}">
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
-        <input type="number" class="form-control" name="nim" id="nim" placeholder="{{Auth::user()->nim}}" disabled>
+        <input type="number" class="form-control" name="nim" id="nim" value="{{ $kp->nim }}" disabled>
     </div>
     <p class="text-justify">Semester!</p>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="semester" id="semester" value="Ganjil" checked>
+        <input class="form-check-input" type="radio" name="semester" id="semester" value="Ganjil" @php if (($kp->semester)=='Ganjil') echo 'checked' @endphp>
         <label class="form-check-label" for="exampleRadios1">
             Ganjil
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="semester" id="semester" value="Genap">
+        <input class="form-check-input" type="radio" name="semester" id="semester" value="Genap" @php if (($kp->semester)=='Genap') echo 'checked' @endphp>
         <label class="form-check-label" for="exampleRadios2">
             Genap
         </label>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Tahun KP</label>
-        <input type="number" class="form-control" name="tahun_kp" id="tahun_kp" placeholder="Masukkan Tahun KP">
+        <input type="number" class="form-control" name="tahun_kp" id="tahun_kp" value="{{ $kp->tahun_kp }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Tool</label>
-        <input type="text" class="form-control" name="tool" id="tool" placeholder="Masukkan jenis Tool">
+        <input type="text" class="form-control" name="tool" id="tool" value="{{ $kp->tool }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Spek</label>
-        <input type="text" class="form-control" name="spek" id="spek" placeholder="Masukkan Spek yang anda gunakan">
+        <input type="text" class="form-control" name="spek" id="spek" value="{{ $kp->spek }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Lembaga</label>
-        <input type="text" class="form-control" name="lembaga" id="lembaga" placeholder="Masukkan Nama Lembaga">
+        <input type="text" class="form-control" name="lembaga" id="lembaga" value="{{ $kp->lembaga }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Pimpinan</label>
-        <input type="text" class="form-control" name="pimpinan" id="pimpinan" placeholder="Masukkan Nama Pimpinan">
+        <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $kp->pimpinan }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Alamat Lembaga</label>
-        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan alamat lembaga">
+        <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $kp->alamat }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor Telepon Lembaga</label>
-        <input type="number" class="form-control" name="telp_lembaga" id="telp_lembaga" placeholder="Masukkan nomor telepon lembaga">
+        <input type="number" class="form-control" name="telp_lembaga" id="telp_lembaga" value="{{ $kp->telp_lembaga }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Waktu Pelaksanaan</label>
-        <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" placeholder="Masukkan Waktu Pelaksanaan KP Anda">
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Judul KP</label>
-        <input type="text" class="form-control" name="jdl_kp" id="jdl_kp" placeholder="Masukkan Judul KP Anda">
+        <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" value="{{ $kp->wkt_pel_kp }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlFile1">Dokumen</label>
-        <input type="file" class="form-control-file" name="dokumen" id="dokumen">
+        <input type="file" class="form-control-file" name="dokumen" id="dokumen" value="{{ $kp->dokumen }}">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Judul KP</label>
+        <input type="text" class="form-control" name="jdl_kp" id="jdl_kp" value="{{ $kp->jdl_kp }}">
     </div>
     <br>
     <div class="form-group">
@@ -113,6 +115,7 @@
 </form>
 </div>
 
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -29,7 +29,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/suratkp">Surat Pengajuan KP</a>
-                <a class="dropdown-item" href="/viewprakp">Pra-KP</a>
+                <a class="dropdown-item" href="/prakp">Pra-KP</a>
                 <a class="dropdown-item" href="/kp">KP</a>
                 <a class="dropdown-item" href="/ujian">Ujian KP</a>
                 </div>
@@ -57,6 +57,7 @@
             <th scope="col">Email</th>
             <th scope="col">Nomor Telepon</th>
             <th scope="col">SKS</th>
+            <th scope="col">Aksi</th>
             </tr>
         </thead>
         @php $nomor=1; @endphp
@@ -70,11 +71,13 @@
             <td>@php echo $m->email @endphp</td>
             <td>@php echo $m->no_telp_mhs @endphp</td>
             <td>@php echo $m->sks @endphp</td>
+            <td>
+            <a href="/mahasiswa/edit/{{ Auth::user()->id }}" class="btn btn-success">Edit</a>
+            </td>
             </tr>
         </tbody>
         @endforeach
     </table>
-    <a class="btn btn-primary" href="/mahasiswa/edit" role="button">Edit Data</a>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

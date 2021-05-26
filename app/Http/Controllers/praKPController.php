@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\PraKP;
+use App\Mahasiswa;
+use Auth;
 
 class praKPController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
         $pkp = PraKP::all();
         return view('viewprakp', ['pkp' => $pkp]);
     }
@@ -20,8 +29,11 @@ class praKPController extends Controller
 
     public function simpan(Request $request)
     {
+        $nim=Auth::user()->nim;
+        $id=Auth::user()->id; 
         DB::table('prakp')->insert([
-            'nim' => $request->nim,
+            'id' =>$id,
+            'nim' => $nim,
             'semester' => $request->semester,
             'tahun_kp' => $request->tahun_kp,
             'tool' => $request->tool,
@@ -35,38 +47,40 @@ class praKPController extends Controller
             'wkt_pel_kp' => $request->wkt_pel_kp
 
         ]);
-        return redirect('viewprakp');
+        return redirect('/prakp');
     }
 
-    public function edit($id_pkp) 
+    public function edit($id_prakp) 
     {
-        $pkp = PraKP::find($id_pkp);
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
+        $pkp = PraKP::where('id_prakp', $id_prakp)->first();
         return view('editprakp', ['pkp' => $pkp]);
     }
 
-    public function updated($id_pkp, Request $request)
+    public function updated(Request $request)
     {
-        $pkp = PraKP::find($id_pkp);
-        $pkp->nim = $request->nim;
-        $pkp->semester = $request->semester;
-        $pkp->tahun_kp = $request->tahun_kp;
-        $pkp->tool = $request->tool;
-        $pkp->spek = $request->spek;
-        $pkp->telp_lembaga = $request->telp_lembaga;
-        $pkp->alamat = $request->alamat;
-        $pkp->lembaga = $request->lembaga;
-        $pkp->dokumen = $request->dokumen;
-        $pkp->pimpinan = $request->pimpinan;
-        $pkp->fax = $request->fax;
-        $pkp->wkt_pel_kp = $request->wkt_pel_kp;
-        $pkp->simpan();
-        return redirect('viewprakp');
+        $nim=Auth::user()->nim;
+        $id=Auth::user()->id;  
+        PraKP::where('id_prakp', $request->id_prakp)->update([
+            'semester' => $request->semester,
+            'tahun_kp' => $request->tahun_kp,
+            'tool' => $request->tool,
+            'spek' => $request->spek,
+            'telp_lembaga' => $request->telp_lembaga,
+            'alamat' => $request->alamat,
+            'lembaga' => $request->lembaga,
+            'dokumen' => $request->dokumen,
+            'pimpinan' => $request->pimpinan,
+            'fax' => $request->fax,
+            'wkt_pel_kp' => $request->wkt_pel_kp,
+        ]);
+        return redirect('/prakp');
     }
 
-    public function delete($id_pkp) 
+    public function delete($id_prakp) 
     {
-        $pkp = PraKP::find($id_pkp);
-        $pkp->delete();
-        return redirect ('viewprakp');
+        PraKP::where('id_prakp', $id_prakp)->delete();
+        return redirect ('/prakp');
     }
 }

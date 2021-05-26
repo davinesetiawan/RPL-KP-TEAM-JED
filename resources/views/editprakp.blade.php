@@ -30,7 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/suratkp">Surat Pengajuan KP</a>
                 <a class="dropdown-item" href="/prakp">Pra-KP</a>
-                <a class="dropdown-item" href="/#">KP</a>
+                <a class="dropdown-item" href="/kp">KP</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -44,16 +44,16 @@
         </div>
     </nav>
     <blockquote class="blockquote">
-        <p class="mt-3">Tambah Data Pra Kerja Praktek</p>
-        <p class="mb-0">Isi form dibawah ini untuk menambah Data Pengajuan Pra Kerja Praktek</p>
+        <p class="mt-3">Edit Data Pra Kerja Praktek</p>
+        <p class="mb-0">Edit form data pengajuan Pra Kerja Praktek</p>
     </blockquote>
-<form action="/prakp/updated/{{ $pkp->id_pkp }}"  method="post">
+<form action="/prakp/updated/" method="post">
     @csrf
     @method ('PUT')
-    <input type="hidden" class="form-control" name="id_pkp" id="id_pkp" value="{{ $pkp->id_pkp }}">
+    <input type="hidden" class="form-control" name="id_prakp" id="id_prakp" value="{{ $pkp->id_prakp }}">
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
-        <input type="number" class="form-control" name="nim" id="nim" value="{{ $pkp->nim }}">
+        <input type="number" class="form-control" name="nim" id="nim" value="{{ $pkp->nim }}" disabled>
     </div>
     <p class="text-justify">Semester!</p>
     <div class="form-check">

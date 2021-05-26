@@ -83,6 +83,7 @@
             <td>@php echo $s->fax @endphp</td>
             <td>@php echo $s->status @endphp</td>
             <td>
+            <!-- <a href="/suratkp/edit/{{ Auth::user()->id }}" class="btn btn-success">Edit</a> -->
             <a href="/suratkp/edit/{{ $s->id_skp }}" class="btn btn-success">Edit</a>
             <a href="/suratkp/delete/{{ $s->id_skp }}" class="btn btn-danger">Hapus</a>
             </td>

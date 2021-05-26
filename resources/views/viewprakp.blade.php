@@ -93,8 +93,8 @@
             <td>@php echo $pkp->dokumen @endphp</td>
             <td>@php echo $pkp->status_prakp @endphp</td>
             <td>
-            <a href="/prakp/edit/{{ $pkp->id_pkp }}" class="btn btn-success">Edit</a>
-            <a href="/prakp/delete/{{ $pkp->id_pkp }}" class="btn btn-danger">Hapus</a>
+            <a href="/prakp/edit/{{ $pkp->id_prakp }}" class="btn btn-success">Edit</a>
+            <a href="/prakp/delete/{{ $pkp->id_prakp }}" class="btn btn-danger">Hapus</a>
             </td>
             </tr>
         </tbody>

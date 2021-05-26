@@ -16,8 +16,9 @@ class SuratKPController extends Controller
     }
    
     public function index() {
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
         $skp = SuratKP::all();
-
         return view('viewsuratkp', ['skp' => $skp]);
     }
 
@@ -26,16 +27,12 @@ class SuratKPController extends Controller
         return view('tambahSurat');
     }
 
-    // public function show($id_mhs){
-    //     $mhs = Mahasiswa::where('id_mhs',$id_mhs)->firstOrFail();
-    // }
-
     public function simpan(Request $request)
     {
         $nim=Auth::user()->nim;
-        $id=Auth::user()->id_mhs;
+        $id=Auth::user()->id;  
         DB::table('suratkp')->insert([
-            'id_mhs' => $id,
+            'id' => $id,
             'nim' => $nim,
             'semester' => $request->semester,
             'tahun_kp' => $request->tahun_kp,
@@ -46,36 +43,39 @@ class SuratKPController extends Controller
             'pimpinan' => $request->pimpinan,
             'fax' => $request->fax
         ]);
-        return redirect('/viewsuratkp');
+        return redirect('/suratkp');
     }
 
     public function edit($id_skp) 
     {
-        $skp = SuratKP::find($id_skp);
+        $id=Auth::user()->id;
+        $nim=Auth::user()->nim;
+        $skp = SuratKP::where('id_skp', $id_skp)->first();
         return view('editSurat', ['skp' => $skp]);
+        // return $skp;
     }
 
-    public function updated($id_skp, Request $request)
+    public function updated(Request $request)
     {
-        $skp = SuratKP::find($id_skp);
-
-        $skp->semester = $request->semester;
-        $skp->tahun_kp = $request->tahun_kp;
-        $skp->telp_lembaga =  $request->telp_lembaga;
-        $skp->alamat = $request->alamat;
-        $skp->lembaga = $request->lembaga;
-        $skp->dokumen = $request->dokumen;
-        $skp->pimpinan = $request->pimpinan;
-        $skp->fax = $request->fax;
-        $skp->simpan();
-        return redirect('/viewsuratkp');
+        $nim=Auth::user()->nim;
+        $id=Auth::user()->id;  
+        $email=Auth::user()->email;
+        SuratKP::where('id_skp',$request->id_skp)->update([
+            'semester' => $request->semester,
+            'tahun_kp' => $request->tahun_kp,
+            'alamat' => $request->alamat,
+            'lembaga' => $request->lembaga,
+            'dokumen' => $request->dokumen,
+            'pimpinan' => $request->pimpinan,
+            'fax' => $request->fax,
+        ]);  
+        return redirect('/suratkp');
     }
 
     public function delete($id_skp) 
     {
-        $skp = SuratKP::find($id_skp);
-        $skp->delete();
-        return redirect ('/viewsuratkp');
+        SuratKP::where('id_skp', $id_skp)->delete();
+        return redirect ('/suratkp');
     }
 
 }

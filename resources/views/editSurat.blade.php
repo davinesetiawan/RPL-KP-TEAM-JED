@@ -44,16 +44,16 @@
         </div>
     </nav>
     <blockquote class="blockquote">
-        <p class="mt-3">Tambah Surat Pengajuan Keterangan KP</p>
-        <p class="mb-0">Isi form dibawah ini untuk menambah Surat Pengajuan Kerja Praktek</p>
+        <p class="mt-3">Edit Surat Pengajuan Keterangan KP</p>
+        <p class="mb-0">Edit Form Surat Pengajuan Kerja Praktek</p>
     </blockquote>
-<form action="/suratkp/updated/{{ $skp->id_skp }}" method="post">
+<form action="/suratkp/updated/" method="post">
     @csrf
     @method ('PUT')
-    <input type="hidden" class="form-control" name="id_skp" id="id_skp" value="{{ $skp->id_skp }}">
+    <input type="hidden" class="form-control" name="id_skp" id="id_skp=" value="{{ $skp->id_skp }}">
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
-        <input type="number" class="form-control" name="nim" id="nim" value="{{ $skp->nim }}">
+        <input type="number" class="form-control" name="nim" id="nim" value="{{ $skp->nim }}" disabled>
     </div>
     <p class="text-justify">Peserta KP Wajib Mengisi Form Pengajuan Surat Kerja Praktek!</p>
     <div class="form-check">
@@ -87,9 +87,11 @@
     <div class="form-group">
     <label for="exampleFormControlFile1">Dokumen</label>
     <input type="file" class="form-control-file" name="dokumen" id="dokumen">
+    </div>
+
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Pimpinan</label>
-        <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $skp->dokumen }}">
+        <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $skp->pimpinan }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor FAX</label>
