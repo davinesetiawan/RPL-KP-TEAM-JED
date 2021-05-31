@@ -16,4 +16,13 @@ class Dosen extends Authenticatable
 
     // @var array
     protected $table = "dosen";
+
+    public function setAttribute($key, $value)
+    {
+      $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+      if (!$isRememberTokenAttribute)
+      {
+        parent::setAttribute($key, $value);
+      }
+    }
 }

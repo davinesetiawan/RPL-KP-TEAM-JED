@@ -26,5 +26,10 @@ class Mahasiswa extends Authenticatable
         parent::setAttribute($key, $value);
       }
     }
+  //   public function post(){
+  //     // disini kita katakan bahwa setiap user akan memiliki banyak post
+  //     // keterangan: itu PostModel sesuaikan dengan nama MODEL POST yang agan gunakan
+  //     return $this->hasMany->('App\PostModel');
+  //  }
 
 }

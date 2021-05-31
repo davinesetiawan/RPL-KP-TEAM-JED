@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/homemhs', 'HomeMhsController@index');
+
 Route::get('/redirect', 'loginGoogleController@redirect');
 Route::get('/callback', 'loginGoogleController@callback');
 Route::get('/logout', 'loginGoogleController@logout');
@@ -23,6 +25,8 @@ Route::get('/mahasiswa', 'MahasiswaController@index');
 Route::get('/mahasiswa/edit/{id}', 'MahasiswaController@edit');
 Route::put('/mahasiswa/updated/', 'MahasiswaController@updated');
 Route::get('/dosen', 'DosenController@index');
+Route::get('/dosen/edit/{id_dosen}', 'DosenController@index');
+
 
 Route::get('/suratkp', 'SuratKPController@index');
 Route::get('/suratkp/tambahSurat', 'SuratKPController@tambahSurat');

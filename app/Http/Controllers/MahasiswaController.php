@@ -15,20 +15,13 @@ class MahasiswaController extends Controller
     }
 
     public function index() {
-        $mhs = Mahasiswa::all();
+        $id=Auth::user()->id;  
+        $nim=Auth::user()->nim;
+        $email=Auth::user()->email;  
+        $mhs = Mahasiswa::where('id',$id)->first();
         return view('mahasiswa', ['mhs' => $mhs]);
+        // return $mhs;
     }
-
-    // public function edit(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'nim' => 'required'
-    //     ]);
-        
-    //     $dup = Mahasiswa::where ([
-    //         ['nim', '=', $request->get('nim')],
-    //     ])->value('id_mhs');
-    // }
 
     public function edit($id) 
     {

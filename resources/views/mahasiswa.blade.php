@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/mahasiswa">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homemhs">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -61,22 +61,20 @@
             </tr>
         </thead>
         @php $nomor=1; @endphp
-        @foreach($mhs as $m)
         <tbody>
             <tr>
             <th scope="row">@php echo $nomor++ @endphp</th>
-            <td>@php echo $m->nim @endphp</td>
-            <td>@php echo $m->nama_mhs @endphp</td>
-            <td>@php echo $m->jenis_kelamin @endphp</td>
-            <td>@php echo $m->email @endphp</td>
-            <td>@php echo $m->no_telp_mhs @endphp</td>
-            <td>@php echo $m->sks @endphp</td>
+            <td>@php echo $mhs->nim @endphp</td>
+            <td>@php echo $mhs->nama_mhs @endphp</td>
+            <td>@php echo $mhs->jenis_kelamin @endphp</td>
+            <td>@php echo $mhs->email @endphp</td>
+            <td>@php echo $mhs->no_telp_mhs @endphp</td>
+            <td>@php echo $mhs->sks @endphp</td>
             <td>
             <a href="/mahasiswa/edit/{{ Auth::user()->id }}" class="btn btn-success">Edit</a>
             </td>
             </tr>
         </tbody>
-        @endforeach
     </table>
     </div>
 </body>
