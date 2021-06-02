@@ -15,7 +15,7 @@
     <input type="hidden" class="form-control" name="id" id="id" value="{{ Auth::user()->id }}">
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
-        <input type="number" class="form-control" name="nim" id="nim" value="{{Auth::user()->nim}}" disabled>
+        <input type="number" class="form-control" name="nim" id="nim" value="{{Auth::user()->nim}}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama</label>

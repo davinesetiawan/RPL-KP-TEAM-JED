@@ -31,10 +31,12 @@ class MahasiswaController extends Controller
 
     public function updated(Request $request)
     {
-        $nim=Auth::user()->nim;
+        // $nim=Auth::user()->nim;
         $id=Auth::user()->id;  
-        $email=Auth::user()->email;  
-        DB::table('mahasiswa')->update([
+        $email=Auth::user()->email;
+        Mahasiswa::where('id',$request->id)->update([  
+        // DB::table('mahasiswa')->update([
+            'nim' => $request->nim,
             'nama_mhs' => $request->nama_mhs,
             'jenis_kelamin' => $request->jenis_kelamin,
             'no_telp_mhs' => $request->no_telp_mhs,

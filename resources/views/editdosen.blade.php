@@ -9,25 +9,25 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <body>
 <body>
-<form action="/mahasiswa/updated/" method="post">
+<form action="/dosen/updated/" method="post">
     @csrf
     @method ('PUT')
-    <input type="hidden" class="form-control" name="id_dosen" id="id_dosen" value="{{ Auth::user()->id_dosen }}">
+    <input type="hidden" class="form-control" name="id" id="id" value="{{ Auth::guard('dosen')->user()->id }}">
     <div class="form-group">
         <label for="exampleFormControlInput1">NIK</label>
-        <input type="number" class="form-control" name="nim" id="nim" value="{{Auth::user()->nik}}" disabled>
+        <input type="number" class="form-control" name="nik" id="nik" value="{{ Auth::guard('dosen')->user()->nik }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama</label>
-        <input type="text" class="form-control" name="nama_dosen" id="nama_dosen" value="{{ Auth::user()->nama_dosen }}">
+        <input type="text" class="form-control" name="nama_dosen" id="nama_dosen" value="{{ Auth::guard('dosen')->user()->nama_dosen }}">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Email</label>
-        <input type="text" class="form-control" name="email_dosen" id="email_dosen" value="{{ Auth::user()->email_dosen }}" disabled>
+        <input type="text" class="form-control" name="email_dosen" id="email_dosen" value="{{ Auth::guard('dosen')->user()->email_dosen }}" disabled>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor Telepon</label>
-        <input type="number" class="form-control" name="no_telp_dosen" id="no_telp_dosen" value="{{ Auth::user()->no_telp_dosen }}">
+        <input type="number" class="form-control" name="no_telp_dosen" id="no_telp_dosen" value="{{ Auth::guard('dosen')->user()->no_telp_dosen }}">
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Simpan">

@@ -15,22 +15,25 @@ class DosenController extends Controller
     }
 
     public function index() {
-        $dsn = Dosen::all();
+        $id=Auth::guard('dosen')->user()->id;  
+        $nik=Auth::guard('dosen')->user()->nik;
+        $email_dosen=Auth::guard('dosen')->user()->email_dosen;  
+        $dsn = Dosen::where('id',$id)->first();
         return view('dosen', ['dsn' => $dsn]);
     }
 
-    public function edit($id_dosen) 
+    public function edit($id) 
     {
-        $dsn = Dosen::find($id_dosen);
+        $dsn = Dosen::find($id);
         return view('editdosen', ['dsn' => $dsn]);
     }
 
     public function updated(Request $request)
     {
-        $nik=Auth::user()->nik;
-        $id_dosen=Auth::user()->id_dosen;  
-        $email=Auth::user()->email;  
+        $id=Auth::guard('dosen')->user()->id;  
+        $email_dosen=Auth::guard('dosen')->user()->email_dosen;  
         DB::table('dosen')->update([
+            'nik' => $request->nik,
             'nama_dosen' => $request->nama_dosen,
             'no_telp_dosen' => $request->no_telp_dosen,
         ]);

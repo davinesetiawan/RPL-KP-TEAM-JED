@@ -18,7 +18,7 @@ class KPController extends Controller
     public function index() {
         $id=Auth::user()->id;
         $nim=Auth::user()->nim;
-        $kp = KP::all();
+        $kp = KP::where('id',$id)->get();
         return view('viewkp', ['kp' => $kp]);
     }
 

@@ -18,7 +18,7 @@ class SuratKPController extends Controller
     public function index() {
         $id=Auth::user()->id;
         $nim=Auth::user()->nim;
-        $skp = SuratKP::all();
+        $skp = SuratKP::where('id',$id)->get();
         return view('viewsuratkp', ['skp' => $skp]);
     }
 

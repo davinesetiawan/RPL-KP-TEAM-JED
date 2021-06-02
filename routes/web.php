@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/homemhs', 'HomeMhsController@index');
+Route::get('/homedsn', 'HomeDsnController@index');
 
 Route::get('/redirect', 'loginGoogleController@redirect');
 Route::get('/callback', 'loginGoogleController@callback');
@@ -24,8 +25,10 @@ Route::get('/logout', 'loginGoogleController@logout');
 Route::get('/mahasiswa', 'MahasiswaController@index');
 Route::get('/mahasiswa/edit/{id}', 'MahasiswaController@edit');
 Route::put('/mahasiswa/updated/', 'MahasiswaController@updated');
+
 Route::get('/dosen', 'DosenController@index');
-Route::get('/dosen/edit/{id_dosen}', 'DosenController@index');
+Route::get('/dosen/edit/{id}', 'DosenController@edit');
+Route::put('/dosen/updated/', 'DosenController@updated');
 
 
 Route::get('/suratkp', 'SuratKPController@index');

@@ -18,29 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/dosen">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homedsn">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mahasiswa">Profil</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Pengajuan
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/pengajuanSurat">Surat Pengajuan KP</a>
-                <a class="dropdown-item" href="#">Pra-KP</a>
-                <a class="dropdown-item" href="#">KP</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ujian">Ujian KP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/dosen">Data Dosen Pembimbing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Log Out</a>
+                <a class="nav-link" href="/dosen">Profil</a>
             </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -61,20 +42,22 @@
             <th scope="col">Nama</th>
             <th scope="col">Nomor Telepon</th>
             <th scope="col">Email</th>
+            <th scope="col">Aksi</th>
             </tr>
         </thead>
         @php $nomor=1; @endphp
-        @foreach($dsn as $d)
         <tbody>
             <tr>
             <th scope="row">@php echo $nomor++ @endphp</th>
-            <td>@php echo $d->nik @endphp</td>
-            <td>@php echo $d->nama_dosen @endphp</td>
-            <td>@php echo $d->no_telp_dosen @endphp</td>
-            <td>@php echo $d->email_dosen @endphp</td>
+            <td>@php echo $dsn->nik @endphp</td>
+            <td>@php echo $dsn->nama_dosen @endphp</td>
+            <td>@php echo $dsn->no_telp_dosen @endphp</td>
+            <td>@php echo $dsn->email_dosen @endphp</td>
+            <td>
+            <a href="/dosen/edit/{{ Auth::guard('dosen')->user()->id }}" class="btn btn-success">Edit</a>
+            </td>
             </tr>
         </tbody>
-        @endforeach
     </table>
     </div>
 </body>

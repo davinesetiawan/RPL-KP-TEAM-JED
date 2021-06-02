@@ -26,11 +26,11 @@ class loginGoogleController extends Controller
 
             if($existMhs){
                 Auth::login($existMhs);
-                return redirect()->to('/mahasiswa');
+                return redirect()->to('/homemhs');
             }
             elseif($existDosen) {
                 Auth::guard('dosen')->login($existDosen);
-                return redirect()->to('/dosen');
+                return redirect()->to('/homedsn');
             }
             else {
                 if(Str::endsWith($googleUser->email, "@si.ukdw.ac.id"))

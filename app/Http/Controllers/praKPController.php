@@ -18,7 +18,7 @@ class praKPController extends Controller
     public function index() {
         $id=Auth::user()->id;
         $nim=Auth::user()->nim;
-        $pkp = PraKP::all();
+        $pkp = PraKP::where('id',$id)->get();
         return view('viewprakp', ['pkp' => $pkp]);
     }
 
