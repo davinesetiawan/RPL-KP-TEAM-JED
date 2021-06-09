@@ -100,7 +100,7 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Waktu Pelaksanaan</label>
-        <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" placeholder="Masukkan Waktu Pelaksanaan KP Anda">
+        <input type="date" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" placeholder="Masukkan Waktu Pelaksanaan KP Anda">
     </div>
     <div class="form-group">
         <label for="file"> Dokumen </label>

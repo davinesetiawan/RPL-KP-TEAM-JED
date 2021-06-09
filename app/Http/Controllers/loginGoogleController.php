@@ -54,7 +54,7 @@ class loginGoogleController extends Controller
                     $dosen->email_dosen = $googleUser->email;
                     // $dosen->google_id = $googleUser->id;
                     $dosen->save();
-                    Auth::login($dosen);
+                    Auth::guard('dosen')->login($dosen);
                     return redirect()->to('/dosen');
                 }
             }

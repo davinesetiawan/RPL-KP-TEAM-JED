@@ -11,7 +11,7 @@ class DosenController extends Controller
 {
     public function _construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:dosen');
     }
 
     public function index() {
@@ -32,10 +32,11 @@ class DosenController extends Controller
     {
         $id=Auth::guard('dosen')->user()->id;  
         $email_dosen=Auth::guard('dosen')->user()->email_dosen;  
-        DB::table('dosen')->update([
+        DB::table('dosen')->where('id', $id)->update([
             'nik' => $request->nik,
             'nama_dosen' => $request->nama_dosen,
             'no_telp_dosen' => $request->no_telp_dosen,
+            'posisi' => $request->posisi,
         ]);
         return redirect('/dosen');
     }

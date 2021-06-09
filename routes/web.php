@@ -68,3 +68,9 @@ Route::put('/verprakp/updated/', 'VerPraKPController@updated');
 Route::get('/verkp', 'VerKPController@index');
 Route::get('/verkp/edit/{id_kp}', 'VerKPController@edit');
 Route::put('/verkp/updated/', 'VerKPController@updated');
+
+Route::get('/ujian', 'UjianController@index');
+Route::get('/ujian/jadwal/{id_kp}', 'UjianController@jadwal');
+Route::post('/ujian/simpan/', 'UjianController@simpan');
+
+Route::get('/lihatbim', 'bimbinganController@index');

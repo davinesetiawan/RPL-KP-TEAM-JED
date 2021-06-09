@@ -8,6 +8,23 @@
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="homedsn">KP UKDW</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/homedsn">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dosen">Profil</a>
+            </li>
+            </ul>
+        </div>
+        </nav>
 <body>
 <form action="/dosen/updated/" method="post">
     @csrf
@@ -28,6 +45,13 @@
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor Telepon</label>
         <input type="number" class="form-control" name="no_telp_dosen" id="no_telp_dosen" value="{{ Auth::guard('dosen')->user()->no_telp_dosen }}">
+    </div>
+    <div class="form-group">
+        <label> Posisi </label>
+        <select name ="posisi" class="custom-select">
+        <option value="1">Dosen Pembimbing</option>
+        <option value="2">Koordinator</option>
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Simpan">

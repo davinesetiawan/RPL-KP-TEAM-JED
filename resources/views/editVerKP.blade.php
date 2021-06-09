@@ -71,12 +71,11 @@
         <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $kp->pimpinan }}" disabled>
     </div>
     <div class="form-group">
-        <label> Verifikasi </label>
-        <select name ="status_kp" class="custom-select">
-        <option value="1">Diterima</option>
-        <option value="2">Ditolak</option>
-        </select>
-    </div>
+        <label> Dosen Pembimbing </label>
+        <select name ="id_dosen" class="custom-select">
+        @foreach($dsn as $k)    
+        <option value="{{$k['id']}}">{{$k['nama_dosen']}}</option>
+    @endforeach
     <br>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Simpan">

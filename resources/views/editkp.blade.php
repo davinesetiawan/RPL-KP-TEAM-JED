@@ -98,7 +98,7 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Waktu Pelaksanaan</label>
-        <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" value="{{ $kp->wkt_pel_kp }}">
+        <input type="date" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" value="{{ $kp->wkt_pel_kp }}">
     </div>
     <div class="form-group">
         <label for="file"> Dokumen </label>

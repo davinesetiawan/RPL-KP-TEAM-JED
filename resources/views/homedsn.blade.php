@@ -36,7 +36,7 @@
         <h1 class="display-4">Selamat Datang di KP@UKDW</h1>
         <p class="lead">Verifikasi, Lihat Daftar Bimbingan Mahasiswa, Set Ujian!</p>
     </div>
-
+    @if ((DB::table('dosen')->where('id',Auth::guard('dosen')->user()->id)->value('posisi')==2)) 
     <div class="card-deck">
     <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2  g-4">
     <div class = "col">
@@ -75,7 +75,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Set Ujian</h5>
                     <p class="card-text">Masuk ke dalam halaman Set Ujian Kerja Praktek</p>
-                    <a href="/#" class="btn btn-primary">Pilih</a>
+                    <a href="/ujian" class="btn btn-primary">Pilih</a>
                 </div>
         </div>
         </div>
@@ -91,7 +91,23 @@
         </div>  
         </div>
         </div>
+        @endif
+
+    @if ((DB::table('dosen')->where('id',Auth::guard('dosen')->user()->id)->value('posisi')==1)) 
+    <div class="card-deck">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2  g-4">
+    <div class = "col">
+        <div class="card">
+            <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Lihat Mahasiswa Bimbingan</h5>
+                    <p class="card-text">Masuk ke dalam halaman lihat mahasiswa bimbingan</p>
+                    <a href="/lihatbim" class="btn btn-primary">Pilih</a>
+                </div>
+        </div>
+        </div>
    </div> 
+   @endif
 
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

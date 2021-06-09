@@ -24,10 +24,11 @@ class VerKPController extends Controller
 
     public function edit($id_kp) 
     {
+        $dsn=Dosen::all();
         $id=Auth::guard('dosen')->user()->id;  
         $nik=Auth::guard('dosen')->user()->nik;
         $kp = KP::where('id_kp', $id_kp)->first();
-        return view('editVerKP', ['kp' => $kp]);
+        return view('editVerKP', compact('kp', 'dsn'));
         // return $kp;
     }
 
@@ -36,7 +37,8 @@ class VerKPController extends Controller
         $id=Auth::guard('dosen')->user()->id;  
         $nik=Auth::guard('dosen')->user()->nik;
         KP::where('id_kp',$request->id_kp)->update([
-            'status_kp' => $request->status_kp
+            'status_kp' => $request->status_kp,
+            'id_dosen' => $request->id_dosen
         ]);  
         return redirect('/verkp');
     }
