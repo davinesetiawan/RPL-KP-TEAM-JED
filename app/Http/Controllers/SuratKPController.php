@@ -29,6 +29,12 @@ class SuratKPController extends Controller
 
     public function simpan(Request $request)
     {
+        $fullname = $request->file('dokumen')->getClientOriginalName();
+        $nim=Auth::user()->nim;
+        $extn =$request->file('dokumen')->getClientOriginalExtension();
+        $final= $nim.'SKP'.'_'.time().'.'.$extn; //tulisan file
+        $path = $request->file('dokumen')->storeAs('public/skp', $final);
+
         $nim=Auth::user()->nim;
         $id=Auth::user()->id;  
         DB::table('suratkp')->insert([
@@ -39,7 +45,7 @@ class SuratKPController extends Controller
             'telp_lembaga' => $request->telp_lembaga,
             'alamat' => $request->alamat,
             'lembaga' => $request->lembaga,
-            'dokumen' => $request->dokumen,
+            'dokumen' => $final,
             'pimpinan' => $request->pimpinan,
             'fax' => $request->fax
         ]);
@@ -57,6 +63,12 @@ class SuratKPController extends Controller
 
     public function updated(Request $request)
     {
+        $fullname = $request->file('dokumen')->getClientOriginalName();
+        $nim=Auth::user()->nim;
+        $extn =$request->file('dokumen')->getClientOriginalExtension();
+        $final= $nim.'SKP'.'_'.time().'.'.$extn; //tulisan file
+        $path = $request->file('dokumen')->storeAs('public/skp', $final);
+
         $nim=Auth::user()->nim;
         $id=Auth::user()->id;  
         $email=Auth::user()->email;
@@ -65,11 +77,12 @@ class SuratKPController extends Controller
             'tahun_kp' => $request->tahun_kp,
             'alamat' => $request->alamat,
             'lembaga' => $request->lembaga,
-            'dokumen' => $request->dokumen,
+            'dokumen' => $final,
             'pimpinan' => $request->pimpinan,
             'fax' => $request->fax,
         ]);  
         return redirect('/suratkp');
+        //return $request;
     }
 
     public function delete($id_skp) 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>..:EDIT SURAT:..</title>
+    <title>..:VERIFIKASI SURAT KP:..</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <body>
@@ -18,36 +18,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/mahasiswa">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homedsn">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/mahasiswa">Profil</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Pengajuan
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/suratkp">Surat Pengajuan KP</a>
-                <a class="dropdown-item" href="/#">Pra-KP</a>
-                <a class="dropdown-item" href="/#">KP</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ujian">Ujian KP</a>
+                <a class="nav-link" href="/dosen">Profil</a>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
-    </nav>
+        </nav>
     <blockquote class="blockquote">
-        <p class="mt-3">Edit Surat Pengajuan Keterangan KP</p>
-        <p class="mb-0">Edit Form Surat Pengajuan Kerja Praktek</p>
+        <p class="mt-3">Verifikasi Surat Pengajuan Keterangan KP</p>
     </blockquote>
-<form action="/suratkp/updated/" method="post" enctype='multipart/form-data'>
+<form action="/versurat/updated/" method="post">
     @csrf
     @method ('PUT')
     <input type="hidden" class="form-control" name="id_skp" id="id_skp=" value="{{ $skp->id_skp }}">
@@ -57,47 +39,56 @@
     </div>
     <p class="text-justify">Peserta KP Wajib Mengisi Form Pengajuan Surat Kerja Praktek!</p>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="semester" id="semester" value="Ganjil" @php if (($skp->semester)=='Ganjil') echo 'checked' @endphp>
+        <input class="form-check-input" type="radio" name="semester" id="semester" value="Ganjil" @php if (($skp->semester)=='Ganjil') echo 'checked' @endphp disabled>
         <label class="form-check-label" for="exampleRadios1">
             Ganjil
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="semester" id="semester" value="Genap" @php if (($skp->semester)=='Genap') echo 'checked' @endphp>
+        <input class="form-check-input" type="radio" name="semester" id="semester" value="Genap" @php if (($skp->semester)=='Genap') echo 'checked' @endphp disabled>
         <label class="form-check-label" for="exampleRadios2">
             Genap
         </label>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Tahun KP</label>
-        <input type="number" class="form-control" name="tahun_kp" id="tahun_kp" value="{{ $skp->tahun_kp }}">
+        <input type="number" class="form-control" name="tahun_kp" id="tahun_kp" value="{{ $skp->tahun_kp }}" disabled>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor Telepon Lembaga</label>
-        <input type="number" class="form-control" name="telp_lembaga" id="telp_lembaga" value="{{ $skp->telp_lembaga }}">
+        <input type="number" class="form-control" name="telp_lembaga" id="telp_lembaga" value="{{ $skp->telp_lembaga }}" disabled>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Alamat Lembaga</label>
-        <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $skp->alamat }}">
+        <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $skp->alamat }}" disabled>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Lembaga</label>
-        <input type="text" class="form-control" name="lembaga" id="lembaga" value="{{ $skp->lembaga }}">
+        <input type="text" class="form-control" name="lembaga" id="lembaga" value="{{ $skp->lembaga }}" disabled>
     </div>
     <div class="form-group">
-        <label for="file"> Dokumen </label>
-        <div class="custom-file">
-        <input type="file" class="form-control-file" id="dokumen" name="dokumen">
-        <label class="form-control-file" for="file"></label>
-        </div>
+    <label for="exampleFormControlFile1">Dokumen</label>
+    <input type="file" class="form-control-file" name="dokumen" id="dokumen" disabled>
     </div>
+
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Pimpinan</label>
-        <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $skp->pimpinan }}">
+        <input type="text" class="form-control" name="pimpinan" id="pimpinan" value="{{ $skp->pimpinan }}" disabled>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nomor FAX</label>
-        <input type="number" class="form-control" name="fax" id="fax" value="{{ $skp->fax }}">
+        <input type="number" class="form-control" name="fax" id="fax" value="{{ $skp->fax }}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Nomor FAX</label>
+        <input type="number" class="form-control" name="fax" id="fax" value="{{ $skp->fax }}" disabled>
+    </div>
+    <div class="form-group">
+        <label> Verifikasi </label>
+        <select name ="status_skp" class="custom-select">
+        <option value="1">Diterima</option>
+        <option value="2">Ditolak</option>
+        </select>
     </div>
     <br>
     <div class="form-group">

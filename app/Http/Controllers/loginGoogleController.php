@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mahasiswa;
 use App\Dosen;
+use App\Periode;
 use Socialite;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,7 +27,10 @@ class loginGoogleController extends Controller
 
             if($existMhs){
                 Auth::login($existMhs);
-                return redirect()->to('/homemhs');
+                $periode = Periode::where('status','=', 1)->value('id_period');
+                Mahasiswa::where('nim', Auth::user()->nim)->update(['id_period' => $periode]);
+                return redirect()->to('/mahasiswa');
+                // return Auth::user()->nim;
             }
             elseif($existDosen) {
                 Auth::guard('dosen')->login($existDosen);

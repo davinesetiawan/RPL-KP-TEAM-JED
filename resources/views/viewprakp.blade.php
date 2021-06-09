@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homemhs">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -54,19 +54,8 @@
         <thead>
             <tr>
             <th scope="col">Nomor</th>
-            <th scope="col">NIM</th>
             <th scope="col">Semester</th>
             <th scope="col">Tahun KP</th>
-            <th scope="col">Tool</th>
-            <th scope="col">Spek</th>
-            <th scope="col">NIK</th>
-            <th scope="col">Penguji</th>
-            <th scope="col">Ruangan</th>
-            <th scope="col">Lembaga</th>
-            <th scope="col">Pimpinan</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Nomor Telepon Lembaga</th>
-            <th scope="col">Waktu Pelaksanaan KP</th>
             <th scope="col">Dokumen</th>
             <th scope="col">Status</th>
             <th scope="col">Aksi</th>
@@ -77,21 +66,25 @@
         <tbody>
             <tr>
             <th scope="row">@php echo $nomor++ @endphp</th>
-            <td>@php echo $pkp->nim @endphp</td>
             <td>@php echo $pkp->semester @endphp</td>
             <td>@php echo $pkp->tahun_kp @endphp</td>
-            <td>@php echo $pkp->tool @endphp</td>
-            <td>@php echo $pkp->spek @endphp</td>
-            <td>@php echo $pkp->nik @endphp</td>
-            <td>@php echo $pkp->penguji @endphp</td>
-            <td>@php echo $pkp->ruangan @endphp</td>
-            <td>@php echo $pkp->lembaga @endphp</td>
-            <td>@php echo $pkp->pimpinan @endphp</td>
-            <td>@php echo $pkp->alamat @endphp</td>
-            <td>@php echo $pkp->telp_lembaga @endphp</td>
-            <td>@php echo $pkp->wkt_pel_kp @endphp</td>
-            <td>@php echo $pkp->dokumen @endphp</td>
-            <td>@php echo $pkp->status_prakp @endphp</td>
+            <form method="post" action="/lihatdok">
+                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
+                <input type="hidden" name="from" value="PraKp">
+                <input type="hidden" name="id" value="{{$pkp['dokumen']}}" >
+                <td><button type="submit" class="btn btn-link">{{$pkp['dokumen']}}</button></td> 
+            </form>
+            @if(
+                $pkp['status_prakp']== null
+            ) 
+            <td>Menunggu</td>
+            @elseif (
+                $pkp['status_prakp']== 1
+            )
+            <td>Diterima</td>
+            @else
+            <td>Ditolak</td>
+            @endif
             <td>
             <a href="/prakp/edit/{{ $pkp->id_prakp }}" class="btn btn-success">Edit</a>
             <a href="/prakp/delete/{{ $pkp->id_prakp }}" class="btn btn-danger">Hapus</a>

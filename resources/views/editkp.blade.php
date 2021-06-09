@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/mahasiswa">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homemhs">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -47,7 +47,7 @@
         <p class="mt-3">Edit Data Kerja Praktek</p>
         <p class="mb-0">Edit form data pengajuan Kerja Praktek</p>
     </blockquote>
-<form action="/kp/updated/" method="post">
+<form action="/kp/updated/" method="post" enctype='multipart/form-data'>
     @csrf
     @method ('PUT')
     <input type="hidden" class="form-control" name="id_kp" id="id_kp" value="{{ $kp->id_kp }}">
@@ -101,8 +101,11 @@
         <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" value="{{ $kp->wkt_pel_kp }}">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlFile1">Dokumen</label>
-        <input type="file" class="form-control-file" name="dokumen" id="dokumen" value="{{ $kp->dokumen }}">
+        <label for="file"> Dokumen </label>
+        <div class="custom-file">
+        <input type="file" class="form-control-file" id="dokumen" name="dokumen">
+        <label class="form-control-file" for="file"></label>
+        </div>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Judul KP</label>

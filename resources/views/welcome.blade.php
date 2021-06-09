@@ -72,7 +72,7 @@
             <div class="content">
             <h1 class="container">Selamat Datang di Kerja Praktek Universitas Kristen Duta Wacana</h1>
                 <div class="title m-b-md">
-                    Laravel
+                    KP@UKDW
                 </div>
 
                 <div class="container">

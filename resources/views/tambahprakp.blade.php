@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homemhs">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -30,7 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/suratkp">Surat Pengajuan KP</a>
                 <a class="dropdown-item" href="/prakp">Pra-KP</a>
-                <a class="dropdown-item" href="/#">KP</a>
+                <a class="dropdown-item" href="/kp">KP</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -47,7 +47,7 @@
         <p class="mt-3">Tambah Data Pra Kerja Praktek</p>
         <p class="mb-0">Isi form dibawah ini untuk menambah Data Pengajuan Pra Kerja Praktek</p>
     </blockquote>
-<form action="/prakp/simpan" method="post">
+<form action="/prakp/simpan" method="post" enctype='multipart/form-data'>
     @php echo csrf_field() @endphp
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
@@ -103,8 +103,11 @@
         <input type="text" class="form-control" name="wkt_pel_kp" id="wkt_pel_kp" placeholder="Masukkan Waktu Pelaksanaan KP Anda">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlFile1">Dokumen</label>
-        <input type="file" class="form-control-file" name="dokumen" id="dokumen">
+        <label for="file"> Dokumen </label>
+        <div class="custom-file">
+        <input type="file" class="form-control-file" id="dokumen" name="dokumen">
+        <label class="form-control-file" for="file"></label>
+        </div>
     </div>
     <br>
     <div class="form-group">

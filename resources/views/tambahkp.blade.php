@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/homemhs">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mahasiswa">Profil</a>
@@ -47,7 +47,7 @@
         <p class="mt-3">Tambah Data Kerja Praktek</p>
         <p class="mb-0">Isi form dibawah ini untuk menambah Data Pengajuan Kerja Praktek</p>
     </blockquote>
-<form action="/kp/simpan" method="post">
+<form action="/kp/simpan" method="post" enctype='multipart/form-data'>
     @php echo csrf_field() @endphp
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
@@ -103,8 +103,11 @@
         <input type="text" class="form-control" name="jdl_kp" id="jdl_kp" placeholder="Masukkan Judul KP Anda">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlFile1">Dokumen</label>
-        <input type="file" class="form-control-file" name="dokumen" id="dokumen">
+        <label for="file"> Dokumen </label>
+        <div class="custom-file">
+        <input type="file" class="form-control-file" id="dokumen" name="dokumen">
+        <label class="form-control-file" for="file"></label>
+        </div>
     </div>
     <br>
     <div class="form-group">

@@ -29,6 +29,12 @@ class praKPController extends Controller
 
     public function simpan(Request $request)
     {
+        $fullname = $request->file('dokumen')->getClientOriginalName();
+        $nim=Auth::user()->nim;
+        $extn =$request->file('dokumen')->getClientOriginalExtension();
+        $final= $nim.'SKP'.'_'.time().'.'.$extn; //tulisan file
+        $path = $request->file('dokumen')->storeAs('public/skp', $final);
+
         $nim=Auth::user()->nim;
         $id=Auth::user()->id; 
         DB::table('prakp')->insert([
@@ -60,6 +66,12 @@ class praKPController extends Controller
 
     public function updated(Request $request)
     {
+        $fullname = $request->file('dokumen')->getClientOriginalName();
+        $nim=Auth::user()->nim;
+        $extn =$request->file('dokumen')->getClientOriginalExtension();
+        $final= $nim.'SKP'.'_'.time().'.'.$extn; //tulisan file
+        $path = $request->file('dokumen')->storeAs('public/skp', $final);
+
         $nim=Auth::user()->nim;
         $id=Auth::user()->id;  
         PraKP::where('id_prakp', $request->id_prakp)->update([

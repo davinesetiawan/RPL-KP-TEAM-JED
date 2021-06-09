@@ -30,7 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/suratkp">Surat Pengajuan KP</a>
                 <a class="dropdown-item" href="/prakp">Pra-KP</a>
-                <a class="dropdown-item" href="/#">KP</a>
+                <a class="dropdown-item" href="/kp">KP</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -47,7 +47,7 @@
         <p class="mt-3">Tambah Surat Pengajuan Keterangan KP</p>
         <p class="mb-0">Isi form dibawah ini untuk menambah Surat Pengajuan Kerja Praktek</p>
     </blockquote>
-<form action="/suratkp/simpan" method="post">
+<form action="/suratkp/simpan" method="post" enctype='multipart/form-data'>
     @php echo csrf_field() @endphp
     <div class="form-group">
         <label for="exampleFormControlInput1">NIM</label>
@@ -83,8 +83,12 @@
         <input type="text" class="form-control" name="lembaga" id="lembaga" placeholder="Masukkan Nama Lembaga">
     </div>
     <div class="form-group">
-    <label for="exampleFormControlFile1">Dokumen</label>
-    <input type="file" class="form-control-file" name="dokumen" id="dokumen">
+        <label for="file"> Dokumen </label>
+        <div class="custom-file">
+        <input type="file" class="form-control-file" id="dokumen" name="dokumen">
+        <label class="form-control-file" for="file"></label>
+        </div>
+    </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Nama Pimpinan</label>
         <input type="text" class="form-control" name="pimpinan" id="pimpinan" placeholder="Masukkan Nama Pimpinan Lembaga">

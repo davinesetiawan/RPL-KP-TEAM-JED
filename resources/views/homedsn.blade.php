@@ -38,37 +38,58 @@
     </div>
 
     <div class="card-deck">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2  g-4">
+    <div class = "col">
         <div class="card">
             <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Verifikasi urat Keterangan KP</h5>
+                    <h5 class="card-title">Verifikasi Surat Keterangan KP</h5>
                     <p class="card-text">Masuk ke dalam halaman Verifikasi Surat Keterangan Kerja Praktek</p>
-                    <a href="/#" class="btn btn-primary">Pilih</a>
+                    <a href="/versurat" class="btn btn-primary">Pilih</a>
                 </div>
         </div>
+        </div>
+        <div class = "col">
         <div class="card">
             <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Verifikasi Pra Kerja Praktek</h5>
                     <p class="card-text">Masuk ke dalam halaman Verifikasi Pra Kerja Praktek</p>
-                    <a href="/#" class="btn btn-primary">Pilih</a>
+                    <a href="/verprakp" class="btn btn-primary">Pilih</a>
                 </div>
-        </div> 
+        </div>
+        </div>
+        <div class = "col">
         <div class="card">
             <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Verifikasi Kerja Praktek</h5>
                     <p class="card-text">Masuk ke dalam halaman Verifikasi Kerja Praktek</p>
-                    <a href="/#" class="btn btn-primary">Pilih</a>
+                    <a href="/verkp" class="btn btn-primary">Pilih</a>
                 </div>
-                <div class="card">
+        </div>
+        </div>
+        <div class = "col">
+        <div class="card">
             <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">set Ujian</h5>
+                    <h5 class="card-title">Set Ujian</h5>
                     <p class="card-text">Masuk ke dalam halaman Set Ujian Kerja Praktek</p>
                     <a href="/#" class="btn btn-primary">Pilih</a>
                 </div>
-        </div> 
+        </div>
+        </div>
+        <div class = "col">
+        <div class="card">
+            <img src="img/suratketerangankp.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Periode</h5>
+                    <p class="card-text">Masuk ke dalam halaman Set Periode KP</p>
+                    <a href="/periode" class="btn btn-primary">Pilih</a>
+                </div>
+        </div>
+        </div>  
+        </div>
         </div>
    </div> 
 
